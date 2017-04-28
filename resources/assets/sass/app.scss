@@ -1,0 +1,61 @@
+
+// Fonts
+@import url(https://fonts.googleapis.com/css?family=Raleway:300,400,600);
+@import url(https://fonts.googleapis.com/css?family=Dancing+Script);
+@import url(http://fonts.googleapis.com/css?family=Merriweather);
+@import url(https://fonts.googleapis.com/css?family=Pacifico);
+@import url(https://fonts.googleapis.com/css?family=Shadows+Into+Light);
+@import url(https://fonts.googleapis.com/css?family=Satisfy);
+
+// Variables
+@import "variables";
+
+// Bootstrap
+@import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
+
+// Cards
+@import "cards";
+
+// Navbar
+@import "navbar";
+
+// Welcome page
+@import "welcome";
+
+// About me
+@import "aboutme";
+
+// Projects
+@import "projects";
+
+// Contactme
+@import "contactme";
+
+html {
+  height: 100%;
+  body {
+    background: url('/images/background.jpg');
+    background-color: black;
+    color: white;
+    height: 100%;
+    #app{
+      height: 1000px;
+    }
+  }
+}
+
+.topic-name{
+  margin-bottom: 2rem;
+}
+
+.black{
+  color: #000!important;
+}
+
+.title-text{
+  color: #000;
+}
+
+
+
+
