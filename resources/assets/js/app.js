@@ -5,7 +5,7 @@
  * building robust, powerful web applications using Vue and Laravel.
  */
 require('./bootstrap');
-
+require('./../../../public/js/lightbox.min.js');
 require('./../../../public/js/slim.kickstart.min.js');
 require('./../../../public/js/slim.jquery.min.js');
 

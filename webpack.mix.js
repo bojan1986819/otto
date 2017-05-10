@@ -23,5 +23,5 @@ mix.js('resources/assets/js/app.js', 'public/js')
     //     'resources/assets/css/phpgrid/ui.jqgrid.css'
     // ],'public/css/vendor.css')
 ;
-mix.styles(['resources/assets/css/slim.css'], 'public/css/vendor.css');
+mix.styles(['resources/assets/css/slim.css','resources/assets/css/lightbox.min.css'], 'public/css/vendor.css');
 

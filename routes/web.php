@@ -36,7 +36,8 @@ Route::any('/admin/projects','ProjectController@phpgridManageProjects')->name('a
 Route::any('/admin/press','PressController@phpgridManagePress')->name('admin_press')->middleware('auth');
 Route::get('/admin/aboutme','SiteController@getAdminAboutMe')->name('admin_aboutme')->middleware('auth');
 Route::post('/admin/aboutme/update', 'SiteController@postUpdateAboutme')->name('admin_aboutme_update')->middleware('auth');
-
+Route::get('/picture/{project_id}', 'ProjectController@getProjectPicture')->name('project.picture');
+Route::post('/update-picture', 'ProjectController@postUpdateProjectPicture')->middleware('auth')->name('project.picture.update');
 
 
 // url image cache

@@ -16,6 +16,7 @@
     <link rel="stylesheet" type="text/css" media="screen" href="{{ URL::to('phpgrid/themes/blitzer/jquery-ui.custom.css')}}">
     <link rel="stylesheet" type="text/css" media="screen" href="{{ URL::to('phpgrid/jqgrid/css/ui.jqgrid.css')}}">
     <script src="{{ asset('js/app.js') }}"></script>
+    <script src="{{ asset('js/lightbox.min.js') }}"></script>
     <script src="{{ asset('js/slim.kickstart.min.js') }}"></script>
     <script src="{{ asset('js/slim.jquery.min.js') }}"></script>
 

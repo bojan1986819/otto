@@ -3,12 +3,21 @@
 namespace App\Http\Controllers;
 
 use App\Classes\phpgrid\jqgrid;
+use App\Classes\Slim;
 use App\Project;
+use App\Repositories\SlimImageHandlingRepository;
 use Illuminate\Http\File;
 use Illuminate\Http\Request;
 
 class ProjectController extends Controller
 {
+    public $request;
+
+    public function __construct(Request $request)
+    {
+        $this->request = $request;
+    }
+
     public function phpgridManageProjects(){
 
         //projectek
@@ -91,6 +100,18 @@ class ProjectController extends Controller
         $col["upload_dir"] = "videos/posters"; // upload here
         $col["editrules"] = array("ifexist"=>"overwrite");
         $col["show"] = array("list"=>false,"edit"=>true,"add"=>true); // only show in add/edit dialog
+        $cols[] = $col;
+
+        $col = array();
+        $col["title"] = "Kép<br>szerkesztése";
+        $col["name"] = "logo";
+        $col["width"] = "100";
+        $col["align"] = "left";
+        $col["search"] = false;
+        $col["sortable"] = false;
+        $col["export"] = true;
+        $buttons_html = "<a href='../picture/{id}' data-toggle='lightbox' data-title='Kép szerkesztése'>Kép szerkesztése</a>";
+        $col["default"] = $buttons_html;
         $cols[] = $col;
 
         $g->set_columns($cols);
@@ -178,5 +199,32 @@ class ProjectController extends Controller
         $out_cast = $g2->render("list2");
 
         return view('admin.projects', array('projects_output' => $out_projects, 'cast_output' => $out_cast));
+    }
+
+    public function getProjectPicture($project_id){
+        $project = Project::find($project_id);
+
+        return view('admin.modals.edit-project-picture',compact('project'));
+    }
+
+    public function postUpdateProjectPicture(){
+
+        $profile = $this->request->profile;
+        $project = Project::find($this->request->projectid);
+        if(isset($profile)){
+            $image = Slim::getImages('profile')[0];
+        }elseif(isset($this->request->delete)){
+            $image = null;
+        }else{
+            $image = 'keep';
+        }
+
+        $path = public_path().'/videos/posters/';
+
+        SlimImageHandlingRepository::handlePoster($image,$project,$path);
+        $project->poster = 'videos/posters/'.$image['input']['name'];
+        $project->save();
+
+        return redirect()->route('admin_projects');
     }
 }

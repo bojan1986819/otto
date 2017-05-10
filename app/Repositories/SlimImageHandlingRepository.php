@@ -58,13 +58,13 @@ class SlimImageHandlingRepository
         {
             $cropMeta = implode(',', $image['actions']['crop']);
             $rotationMeta = $image['actions']['rotation'];
-            $result['input']=Slim::saveFile($image['input']['data'], $project->id . '.jpg', $path);
-            $project->setMeta('profilecrop',$cropMeta);
-            $project->setMeta('profilerotation',$rotationMeta);
-            $project->setMeta('profile',$result['input']['name']);
+            $result['input']=Slim::saveFile($image['input']['data'], $image['input']['name'] . '-original.jpg', $path, false);
+            $project->setMeta('postercrop',$cropMeta);
+            $project->setMeta('posterrotation',$rotationMeta);
+            $project->setMeta('posteroriginal',$result['input']['name']);
             $project->save();
             if(isset($image['output']['data'])){
-                $result['output']=Slim::saveFile($image['output']['data'], $project->id . '-cropped.jpg', $path);
+                $result['output']=Slim::saveFile($image['output']['data'], $image['input']['name'], $path, false);
                 $project->setMeta('profileoutput',$result['output']['name']);
             }
         }
