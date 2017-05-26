@@ -1,0 +1,39 @@
+#video{
+  position: relative;
+  z-index: 0;
+}
+.overlay{
+  position: absolute;
+  z-index: 1;
+  top:40%;
+  left: 40%;
+}
+
+.header-text{
+  //font-family: 'Pacifico', cursive;
+  font-size: 4rem;
+  color: white;
+}
+.header-row{
+  margin-top: 20px;
+  line-height: 80%;
+}
+
+.welcome-container{
+  //margin-top: 50px;
+  background: rgba(1,1,1,0.7);
+  width: 100%;
+  height: 100%;
+}
+
+.quoteblock{
+  margin-bottom: 90px;
+}
+
+.author{
+
+}
+
+.quote::before {
+  content: "\201C";
+}
