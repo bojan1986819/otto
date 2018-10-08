@@ -27,5 +27,9 @@
         {!! Form::submit('Frissítés', ['class'=>'btn btn-primary']) !!}
         {!! Form::close() !!}
     </div>
+
+    <div class="row aboutme-box">
+        {!! $out_quotes !!}
+    </div>
 </div>
 @endsection

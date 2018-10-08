@@ -13,20 +13,25 @@ class CreateMetasTable extends Migration
      */
     public function up()
     {
-        Schema::create('metas', function (Blueprint $table) {
-            $table->increments('id');
-            $table->integer('parent_id')->unsigned();
-            $table->string('parent_type');
-            $table->string('key');
-            $table->string('value');
-            $table->timestamps();
 
-            $table->unique(['parent_id','parent_type', 'key']);
-            $table->index(['parent_id','parent_type']);
+        if (Schema::hasTable('metas')) {
+
+        }else {
+            Schema::create('metas', function (Blueprint $table) {
+                $table->increments('id');
+                $table->integer('parent_id')->unsigned();
+                $table->string('parent_type');
+                $table->string('key');
+                $table->string('value');
+                $table->timestamps();
+
+                $table->unique(['parent_id', 'parent_type', 'key']);
+                $table->index(['parent_id', 'parent_type']);
 
 //            $table->foreign('event_id')->references('id')->on('events')->onDelete('cascade');
 //            $table->foreign(['parent_id','parent_type'])->references('id')->on('events')->onDelete('cascade');
-        });
+            });
+        }
     }
 
     /**
